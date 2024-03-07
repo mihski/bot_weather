@@ -1,0 +1,34 @@
+name: Deploy
+
+on:
+  workflow_dispatch
+
+env:
+  SERVER_HOST: 51.38.73.150
+  SERVER_USER: root
+  SERVER_PATH: /opt/bot-weather-git
+
+jobs:
+
+  deploy:
+    runs-on: Ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      #- name: Create directory on remote server
+       # run: ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p ${{ env.SERVER_PATH }}"
+
+      # Install ssh key
+      - name: Install SSH Key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: "${{ secrets.DEPLOY_KEY }}"
+          known_hosts: "just-a-placeholder-so-we-dont-get-errors"
+          
+      - name: Generate auth hosts
+        run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      # Deploy
+      - run: rsync --archive --compress --progress . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
+
