@@ -1,7 +1,4 @@
 import datetime
-import time
-
-import schedule
 from pprint import pprint
 import requests
 from config import open_weather_token

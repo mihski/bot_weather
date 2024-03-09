@@ -1,34 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 version: '3'
 
-services: 
-    app:
-        build: ./app 
-        ports:
-            - 7000:8080
+services:
+  app:
+    build: .
+    ports:
+      - 7000:8080
 
         
-=======
-version: '3'
 
-services: 
-    app:
-        build: .
-        ports:
-            - 7000:8080
-
-        
->>>>>>> 23a7f08b4368fd91d0650cbd04df7f802635621b
-=======
-version: '3'
-
-services: 
-    app:
-        build: .
-        ports:
-            - 7000:8080
-
-        
->>>>>>> origin/main
     
