@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install SSH Key
-        uses: appleboy/ssh-action@master
+        uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: "${{ secrets.DEPLOY_KEY }}"
           known_hosts: "just-a-placeholder-so-we-dont-get-errors"    
