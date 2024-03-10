@@ -15,8 +15,7 @@ jobs:
         with:
           ssh-private-key: "${{ secrets.DEPLOY_KEY }}"
           known_hosts: "just-a-placeholder-so-we-dont-get-errors"    
-      - name: Create directory ttt
-        run: ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p ${{ env.SERVER_PATH }}/ttt"
+      
             
       - name: Generate auth hosts
         run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
