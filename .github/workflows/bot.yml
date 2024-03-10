@@ -11,11 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install SSH Key
-        uses: webfactory/ssh-agent@v0.5.4
+        uses: appleboy/ssh-action@master
         with:
           ssh-private-key: "${{ secrets.DEPLOY_KEY }}"
-          known_hosts: "just-a-placeholder-so-we-dont-get-errors"          
-      - name: Generate auth hosts
-        run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
-      - run: rsync --archive --compress --progress . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
+          known_hosts: "just-a-placeholder-so-we-dont-get-errors"    
+          script: |
+            cd ${{ env.SERVER_PATH }}
+            mkdir "ttt"
+  #    - name: Generate auth hosts
+  #     run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
+  #  - run: rsync --archive --compress --progress . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
 
