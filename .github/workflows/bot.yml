@@ -16,9 +16,9 @@ jobs:
           ssh-private-key: "${{ secrets.DEPLOY_KEY }}"
           known_hosts: "just-a-placeholder-so-we-dont-get-errors"    
           script: |
-            cd ${{ env.SERVER_PATH }}
-            mkdir ttt
+            mkdir${{ env.SERVER_PATH }}/ttt
+            
       - name: Generate auth hosts
-       # run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
       - run: rsync --archive --compress --progress . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
 
