@@ -14,7 +14,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: "${{ secrets.DEPLOY_KEY }}"
-          known_hosts: "just-a-placeholder-so-we-dont-get-errors"          
+          known_hosts: "just-a-placeholder-so-we-dont-get-errors"               
       - name: Generate auth hosts
         run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
       - run: rsync --archive --compress --progress . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
