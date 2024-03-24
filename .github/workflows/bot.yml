@@ -1,6 +1,7 @@
 name: Deploy
 on:
-  workflow_dispatch
+  # workflow_dispatch
+  push
 env:
   SERVER_HOST: 51.38.73.150
   SERVER_USER: root
