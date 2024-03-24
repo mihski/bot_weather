@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: Ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3 # получаю репозиторий
       - name: Install SSH Key
         uses: webfactory/ssh-agent@v0.5.4
         with:
@@ -19,3 +19,5 @@ jobs:
         run: ssh-keyscan -H ${{ env.SERVER_HOST }} >> ~/.ssh/known_hosts
       - run: rsync --archive --compress --progress . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
 
+    
+              
