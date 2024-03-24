@@ -39,10 +39,10 @@ def get_weather(city, open_weather_token):
         elif 292 < wind_gradient <= 338:
             wg = "СЗ"
 
-        weather_discription = data["weather"][0]["main"]
+        weather_description = data["weather"][0]["main"]
 
-        if weather_discription in code_smile:
-            wd = code_smile[weather_discription]
+        if weather_description in code_smile:
+            wd = code_smile[weather_description]
         else:
             wd = "не знаю"
 
