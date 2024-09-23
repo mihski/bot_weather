@@ -3,7 +3,7 @@ on:
   # workflow_dispatch
   push
 env:
-  SERVER_HOST: 51.38.73.150
+  SERVER_HOST: 5.144.182.65
   SERVER_USER: root
   SERVER_PATH: /opt/bot-weather-git
 jobs:
